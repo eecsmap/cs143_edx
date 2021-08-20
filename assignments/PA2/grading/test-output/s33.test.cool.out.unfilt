@@ -1,0 +1,8 @@
+#name "./s33.test.cool"
+(* test an unterminated comment *)
+
+before_the_comment
+
+(* this
+ * won't
+ * end

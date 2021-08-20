@@ -1,0 +1,5 @@
+#name "./wq0607-c3.cool"
+(* Complicated sequence of strings and escaped quotes and errors *)
+
+"\\""\"\""\\""\"\\"\"\\"""\"\""\"
+

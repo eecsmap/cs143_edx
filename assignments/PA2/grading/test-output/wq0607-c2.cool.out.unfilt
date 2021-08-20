@@ -1,0 +1,5 @@
+#name "./wq0607-c2.cool"
+(* COMMENT, STRING, ERROR[unmatched close comment], STRING *)
+
+(*"(*"*)"*)"(*"*)"*)(*"
+

@@ -1,0 +1,19 @@
+1,4c1,13
+< #7 '+'
+< #8 OBJECTID abc
+< #12 TYPEID DEF
+< #13 STR_CONST "string"
+---
+> (* first line
+> (* second line
+> -- third line
+> *) fourth line
+> *)
+> -- sixth line
+> +
+> abc
+> -- ninth line
+> (* tenth line
+> *)
+> DEF
+> "string"

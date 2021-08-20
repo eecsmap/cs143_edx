@@ -1,0 +1,2 @@
+#name "./s03.test.cool"
+-- can they handle EOF in "--" state?

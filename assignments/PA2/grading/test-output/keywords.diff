@@ -1,0 +1,6 @@
+5,6c5,6
+< BOOL_CONST false
+< BOOL_CONST true
+---
+> fALSE
+> trUE

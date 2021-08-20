@@ -1,0 +1,24 @@
+1,11c1,11
+< NOT
+< IN
+< OBJECTID a
+< OBJECTID comment
+< '('
+< '*'
+< NOT
+< OBJECTID a
+< OBJECTID comment
+< '*'
+< ')'
+---
+> (* comment *)
+> (* also a comment *)
+> not in a comment
+> (* in a 
+> comment
+> with 
+> many 
+> lines
+> *)
+> ( * not a comment * )
+> 

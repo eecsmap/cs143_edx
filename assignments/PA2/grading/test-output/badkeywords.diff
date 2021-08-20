@@ -1,0 +1,45 @@
+1,18c1,14
+< OBJECTID casee
+< OBJECTID elsif
+< OBJECTID form
+< OBJECTID es
+< ';'
+< OBJECTID ac
+< OBJECTID true9
+< TYPEID False
+< OBJECTID fi_if
+< OBJECTID inh
+< OBJECTID erits
+< OBJECTID isS
+< OBJECTID isv
+< TYPEID Oid
+< TYPEID Loopnew
+< TYPEID NOte
+< OBJECTID ofofofofof
+< TYPEID PO8ol
+---
+> casee
+> elsif
+> form
+> es;ac
+> true9
+> False
+> fi_if
+> inh erits
+> isS
+> isv	Oid
+> Loopnew
+> NOte
+> ofofofofof
+> PO8ol
+20,23c16,20
+< OBJECTID hile
+< OBJECTID ifif
+< TYPEID IFIF
+< OBJECTID fif
+---
+> hile
+> ifif
+> IFIF
+> fif
+> 

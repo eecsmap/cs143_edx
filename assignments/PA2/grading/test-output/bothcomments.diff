@@ -1,0 +1,17 @@
+1,11c1,4
+< OBJECTID what
+< OBJECTID the
+< OBJECTID programmer
+< OBJECTID thought
+< OBJECTID it
+< OBJECTID was
+< LONGERROR
+< '.'
+< IF
+< INT_CONST 5
+< THEN
+---
+> -- (* This isn't
+> what the programmer thought it was *) 
+> .
+> (* -- neither is this *) if 5 then

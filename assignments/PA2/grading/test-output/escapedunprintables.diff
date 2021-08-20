@@ -1,0 +1,12 @@
+1,5c1,5
+< STR_CONST "This is a tab:\t"
+< STR_CONST "This is a backspace:\b"
+< STR_CONST "This is a formfeed:\f"
+< STR_CONST "This is a carriage return:\015"
+< STR_CONST "This is an escape:\033"
+---
+> "This is a tab:\	"
+> "This is a backspace:\"
+> "This is a formfeed:\"
+> "This is a carriage return:"
+> "This is an escape:"

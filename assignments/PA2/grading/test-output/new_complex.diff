@@ -1,0 +1,362 @@
+1,83c1,35
+< CLASS
+< TYPEID Main
+< INHERITS
+< TYPEID IO
+< '{'
+< OBJECTID main
+< '('
+< ')'
+< ':'
+< TYPEID SELF_TYPE
+< '{'
+< '('
+< LET
+< OBJECTID c
+< ':'
+< TYPEID Complex
+< ASSIGN
+< '('
+< NEW
+< TYPEID Complex
+< ')'
+< '.'
+< OBJECTID init
+< '('
+< INT_CONST 1
+< ','
+< INT_CONST 1
+< ')'
+< IN
+< '{'
+< IF
+< OBJECTID c
+< '.'
+< OBJECTID reflect_X
+< '('
+< ')'
+< '='
+< OBJECTID c
+< '.'
+< OBJECTID reflect_0
+< '('
+< ')'
+< THEN
+< OBJECTID out_string
+< '('
+< STR_CONST "=)\n"
+< ')'
+< ELSE
+< OBJECTID out_string
+< '('
+< STR_CONST "=(\n"
+< ')'
+< FI
+< ';'
+< IF
+< OBJECTID c
+< '.'
+< OBJECTID reflect_X
+< '('
+< ')'
+< '.'
+< OBJECTID reflect_Y
+< '('
+< ')'
+< '.'
+< OBJECTID equal
+< '('
+< OBJECTID c
+< '.'
+< OBJECTID reflect_0
+< '('
+< ')'
+< ')'
+< THEN
+< OBJECTID out_string
+< '('
+< STR_CONST "=)\n"
+< ')'
+< ELSE
+< OBJECTID out_string
+< '('
+< STR_CONST "=(\n"
+< ')'
+---
+> class Main inherits IO {
+>     main() : SELF_TYPE {
+> 	(let c : Complex <- (new Complex).init(1, 1) in
+> 	    {
+> 	        -- trivially equal (see CoolAid)
+> 	        if c.reflect_X() = c.reflect_0()
+> 	        then out_string("=)\n")
+> 	        else out_string("=(\n")
+> 	        fi;
+> 		-- equal
+> 	        if c.reflect_X().reflect_Y().equal(c.reflect_0())
+> 	        then out_string("=)\n")
+> 	        else out_string("=(\n")
+> 	        fi;
+> 	    }
+> 	)
+>     };
+> };
+> 
+> class Complex inherits IO {
+>     x : Int;
+>     y : Int;
+> 
+>     init(a : Int, b : Int) : Complex {
+> 	{
+> 	    x = a;
+> 	    y = b;
+> 	    self;
+> 	}
+>     };
+> 
+>     print() : Object {
+> 	if y = 0
+> 	then out_int(x)
+> 	else out_int(x).out_string("+").out_int(y).out_string("I")
+85,251c37,62
+< ';'
+< '}'
+< ')'
+< '}'
+< ';'
+< '}'
+< ';'
+< CLASS
+< TYPEID Complex
+< INHERITS
+< TYPEID IO
+< '{'
+< OBJECTID x
+< ':'
+< TYPEID Int
+< ';'
+< OBJECTID y
+< ':'
+< TYPEID Int
+< ';'
+< OBJECTID init
+< '('
+< OBJECTID a
+< ':'
+< TYPEID Int
+< ','
+< OBJECTID b
+< ':'
+< TYPEID Int
+< ')'
+< ':'
+< TYPEID Complex
+< '{'
+< '{'
+< OBJECTID x
+< '='
+< OBJECTID a
+< ';'
+< OBJECTID y
+< '='
+< OBJECTID b
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID print
+< '('
+< ')'
+< ':'
+< TYPEID Object
+< '{'
+< IF
+< OBJECTID y
+< '='
+< INT_CONST 0
+< THEN
+< OBJECTID out_int
+< '('
+< OBJECTID x
+< ')'
+< ELSE
+< OBJECTID out_int
+< '('
+< OBJECTID x
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< STR_CONST "+"
+< ')'
+< '.'
+< OBJECTID out_int
+< '('
+< OBJECTID y
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< STR_CONST "I"
+< ')'
+< FI
+< '}'
+< ';'
+< OBJECTID reflect_0
+< '('
+< ')'
+< ':'
+< TYPEID Complex
+< '{'
+< '{'
+< OBJECTID x
+< '='
+< '~'
+< OBJECTID x
+< ';'
+< OBJECTID y
+< '='
+< '~'
+< OBJECTID y
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID reflect_X
+< '('
+< ')'
+< ':'
+< TYPEID Complex
+< '{'
+< '{'
+< OBJECTID y
+< '='
+< '~'
+< OBJECTID y
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID reflect_Y
+< '('
+< ')'
+< ':'
+< TYPEID Complex
+< '{'
+< '{'
+< OBJECTID x
+< '='
+< '~'
+< OBJECTID x
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID equal
+< '('
+< OBJECTID d
+< ':'
+< TYPEID Complex
+< ')'
+< ':'
+< TYPEID Bool
+< '{'
+< IF
+< OBJECTID x
+< '='
+< OBJECTID d
+< '.'
+< OBJECTID x_value
+< '('
+< ')'
+< THEN
+< IF
+< OBJECTID y
+< '='
+< OBJECTID d
+< '.'
+< OBJECTID y_value
+< '('
+< ')'
+---
+>     };
+> 
+>     reflect_0() : Complex {
+> 	{
+> 	    x = ~x;
+> 	    y = ~y;
+> 	    self;
+> 	}
+>     };
+> 
+>     reflect_X() : Complex {
+> 	{
+> 	    y = ~y;
+> 	    self;
+> 	}
+>     };
+> 
+>     reflect_Y() : Complex {
+> 	{
+> 	    x = ~x;
+> 	    self;
+> 	}
+>     };
+> 
+>     equal(d : Complex) : Bool {
+> 	if x = d.x_value()
+253,255c64,66
+< BOOL_CONST true
+< ELSE
+< BOOL_CONST false
+---
+> 	    if y = d.y_value()
+> 	    then true
+> 	    else false
+257,258c68
+< ELSE
+< BOOL_CONST false
+---
+> 	else false
+260,281c70,79
+< '}'
+< ';'
+< OBJECTID x_value
+< '('
+< ')'
+< ':'
+< TYPEID Int
+< '{'
+< OBJECTID x
+< '}'
+< ';'
+< OBJECTID y_value
+< '('
+< ')'
+< ':'
+< TYPEID Int
+< '{'
+< OBJECTID y
+< '}'
+< ';'
+< '}'
+< ';'
+---
+>     };
+> 
+>     x_value() : Int {
+> 	x
+>     };
+> 
+>     y_value() : Int {
+> 	y
+>     };
+> };

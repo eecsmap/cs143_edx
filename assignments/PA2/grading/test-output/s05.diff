@@ -1,0 +1,4 @@
+1c1
+< STR_CONST "other unescaped whitespace: \t\f\022\013"
+---
+> "other unescaped whitespace: 	"

@@ -1,0 +1,615 @@
+1,202c1,119
+< CLASS
+< TYPEID Book
+< INHERITS
+< TYPEID IO
+< '{'
+< OBJECTID title
+< ':'
+< TYPEID String
+< ';'
+< OBJECTID author
+< ':'
+< TYPEID String
+< ';'
+< OBJECTID initBook
+< '('
+< OBJECTID title_p
+< ':'
+< TYPEID String
+< ','
+< OBJECTID author_p
+< ':'
+< TYPEID String
+< ')'
+< ':'
+< TYPEID Book
+< '{'
+< '{'
+< OBJECTID title
+< ASSIGN
+< OBJECTID title_p
+< ';'
+< OBJECTID author
+< ASSIGN
+< OBJECTID author_p
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID print
+< '('
+< ')'
+< ':'
+< TYPEID Book
+< '{'
+< '{'
+< OBJECTID out_string
+< '('
+< STR_CONST "title:      "
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< OBJECTID title
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< STR_CONST "\n"
+< ')'
+< ';'
+< OBJECTID out_string
+< '('
+< STR_CONST "author:     "
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< OBJECTID author
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< STR_CONST "\n"
+< ')'
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< '}'
+< ';'
+< CLASS
+< TYPEID Article
+< INHERITS
+< TYPEID Book
+< '{'
+< OBJECTID per_title
+< ':'
+< TYPEID String
+< ';'
+< OBJECTID initArticle
+< '('
+< OBJECTID title_p
+< ':'
+< TYPEID String
+< ','
+< OBJECTID author_p
+< ':'
+< TYPEID String
+< ','
+< OBJECTID per_title_p
+< ':'
+< TYPEID String
+< ')'
+< ':'
+< TYPEID Article
+< '{'
+< '{'
+< OBJECTID initBook
+< '('
+< OBJECTID title_p
+< ','
+< OBJECTID author_p
+< ')'
+< ';'
+< OBJECTID per_title
+< ASSIGN
+< OBJECTID per_title_p
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID print
+< '('
+< ')'
+< ':'
+< TYPEID Book
+< '{'
+< '{'
+< OBJECTID self
+< '@'
+< TYPEID Book
+< '.'
+< OBJECTID print
+< '('
+< ')'
+< ';'
+< OBJECTID out_string
+< '('
+< STR_CONST "periodical:  "
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< OBJECTID per_title
+< ')'
+< '.'
+< OBJECTID out_string
+< '('
+< STR_CONST "\n"
+< ')'
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< '}'
+< ';'
+< CLASS
+< TYPEID BookList
+< INHERITS
+< TYPEID IO
+< '{'
+< OBJECTID isNil
+< '('
+< ')'
+< ':'
+< TYPEID Bool
+< '{'
+< '{'
+< OBJECTID abort
+< '('
+< ')'
+< ';'
+< BOOL_CONST true
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID cons
+< '('
+< OBJECTID hd
+< ':'
+< TYPEID Book
+< ')'
+< ':'
+< TYPEID Cons
+< '{'
+< '('
+< LET
+< OBJECTID new_cell
+< ':'
+< TYPEID Cons
+< ASSIGN
+< NEW
+< TYPEID Cons
+---
+> -- example of static and dynamic type differing for a dispatch
+> 
+> Class Book inherits IO {
+>     title : String;
+>     author : String;
+> 
+>     initBook(title_p : String, author_p : String) : Book {
+>         {
+>             title <- title_p;
+>             author <- author_p;
+>             self;
+>         }
+>     };
+> 
+>     print() : Book {
+>         {
+>             out_string("title:      ").out_string(title).out_string("\n");
+>             out_string("author:     ").out_string(author).out_string("\n");
+>             self;
+>         }
+>     };
+> };
+> 
+> Class Article inherits Book {
+>     per_title : String;
+> 
+>     initArticle(title_p : String, author_p : String,
+> 		per_title_p : String) : Article {
+>         {
+>             initBook(title_p, author_p);
+>             per_title <- per_title_p;
+>             self;
+>         }
+>     };
+> 
+>     print() : Book {
+>         {
+> 	    self@Book.print();
+>             out_string("periodical:  ").out_string(per_title).out_string("\n");
+>             self;
+>         }
+>     };
+> };
+> 
+> Class BookList inherits IO { 
+>     (* Since abort "returns" type Object, we have to add
+>        an expression of type Bool here to satisfy the typechecker.
+>        This code is unreachable, since abort() halts the program.
+>     *)
+>     isNil() : Bool { { abort(); true; } };
+>     
+>     cons(hd : Book) : Cons {
+>         (let new_cell : Cons <- new Cons in
+>             new_cell.init(hd,self)
+>         )
+>     };
+> 
+>     (* Since abort "returns" type Object, we have to add
+>        an expression of type Book here to satisfy the typechecker.
+>        This code is unreachable, since abort() halts the program.
+>     *)
+>     car() : Book { { abort(); new Book; } };
+>     
+>     (* Since abort "returns" type Object, we have to add
+>        an expression of type BookList here to satisfy the typechecker.
+>        This code is unreachable, since abort() halts the program.
+>     *)
+>     cdr() : BookList { { abort(); new BookList; } };
+>     
+>     print_list() : Object { abort() };
+> };
+> 
+> Class Cons inherits BookList {
+>     xcar : Book;  -- We keep the car and cdr in attributes.
+>     xcdr : BookList; -- Because methods and features must have different names,
+>     -- we use xcar and xcdr for the attributes and reserve
+>     -- car and cdr for the features.
+>     
+>     isNil() : Bool { false };
+>     
+>     init(hd : Book, tl : BookList) : Cons {
+>         {
+>             xcar <- hd;
+>             xcdr <- tl;
+>             self;
+>         }
+>     };
+> 
+>     car() : Book { xcar };
+> 
+>     cdr() : BookList { xcdr };
+>     
+>     print_list() : Object {
+>         {
+>             case xcar.print() of
+>                 dummy : Book #1 DARROW
+>  out_string("- dynamic type was Book -\n");
+>                 dummy : Article #1 DARROW
+>  out_string("- dynamic type was Article -\n");
+>             esac;
+>             xcdr.print_list();
+>         }
+>     };
+> };
+> 
+> Class Nil inherits BookList {
+>     isNil() : Bool { true };
+> 
+>     print_list() : Object { true };
+> };
+> 
+> Class Main {
+> 
+>     books : BookList;
+> 
+>     main() : Object {
+>         (let a_book : Book <-
+>             (new Book).initBook("Compilers, Principles, Techniques, and Tools",
+>                                 "Aho, Sethi, and Ullman")
+204,428c121,124
+< OBJECTID new_cell
+< '.'
+< OBJECTID init
+< '('
+< OBJECTID hd
+< ','
+< OBJECTID self
+< ')'
+< ')'
+< '}'
+< ';'
+< OBJECTID car
+< '('
+< ')'
+< ':'
+< TYPEID Book
+< '{'
+< '{'
+< OBJECTID abort
+< '('
+< ')'
+< ';'
+< NEW
+< TYPEID Book
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID cdr
+< '('
+< ')'
+< ':'
+< TYPEID BookList
+< '{'
+< '{'
+< OBJECTID abort
+< '('
+< ')'
+< ';'
+< NEW
+< TYPEID BookList
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID print_list
+< '('
+< ')'
+< ':'
+< TYPEID Object
+< '{'
+< OBJECTID abort
+< '('
+< ')'
+< '}'
+< ';'
+< '}'
+< ';'
+< CLASS
+< TYPEID Cons
+< INHERITS
+< TYPEID BookList
+< '{'
+< OBJECTID xcar
+< ':'
+< TYPEID Book
+< ';'
+< OBJECTID xcdr
+< ':'
+< TYPEID BookList
+< ';'
+< OBJECTID isNil
+< '('
+< ')'
+< ':'
+< TYPEID Bool
+< '{'
+< BOOL_CONST false
+< '}'
+< ';'
+< OBJECTID init
+< '('
+< OBJECTID hd
+< ':'
+< TYPEID Book
+< ','
+< OBJECTID tl
+< ':'
+< TYPEID BookList
+< ')'
+< ':'
+< TYPEID Cons
+< '{'
+< '{'
+< OBJECTID xcar
+< ASSIGN
+< OBJECTID hd
+< ';'
+< OBJECTID xcdr
+< ASSIGN
+< OBJECTID tl
+< ';'
+< OBJECTID self
+< ';'
+< '}'
+< '}'
+< ';'
+< OBJECTID car
+< '('
+< ')'
+< ':'
+< TYPEID Book
+< '{'
+< OBJECTID xcar
+< '}'
+< ';'
+< OBJECTID cdr
+< '('
+< ')'
+< ':'
+< TYPEID BookList
+< '{'
+< OBJECTID xcdr
+< '}'
+< ';'
+< OBJECTID print_list
+< '('
+< ')'
+< ':'
+< TYPEID Object
+< '{'
+< '{'
+< CASE
+< OBJECTID xcar
+< '.'
+< OBJECTID print
+< '('
+< ')'
+< OF
+< OBJECTID dummy
+< ':'
+< TYPEID Book
+< DARROW
+< OBJECTID out_string
+< '('
+< STR_CONST "- dynamic type was Book -\n"
+< ')'
+< ';'
+< OBJECTID dummy
+< ':'
+< TYPEID Article
+< DARROW
+< OBJECTID out_string
+< '('
+< STR_CONST "- dynamic type was Article -\n"
+< ')'
+< ';'
+< ESAC
+< ';'
+< OBJECTID xcdr
+< '.'
+< OBJECTID print_list
+< '('
+< ')'
+< ';'
+< '}'
+< '}'
+< ';'
+< '}'
+< ';'
+< CLASS
+< TYPEID Nil
+< INHERITS
+< TYPEID BookList
+< '{'
+< OBJECTID isNil
+< '('
+< ')'
+< ':'
+< TYPEID Bool
+< '{'
+< BOOL_CONST true
+< '}'
+< ';'
+< OBJECTID print_list
+< '('
+< ')'
+< ':'
+< TYPEID Object
+< '{'
+< BOOL_CONST true
+< '}'
+< ';'
+< '}'
+< ';'
+< CLASS
+< TYPEID Main
+< '{'
+< OBJECTID books
+< ':'
+< TYPEID BookList
+< ';'
+< OBJECTID main
+< '('
+< ')'
+< ':'
+< TYPEID Object
+< '{'
+< '('
+< LET
+< OBJECTID a_book
+< ':'
+< TYPEID Book
+< ASSIGN
+< '('
+< NEW
+< TYPEID Book
+< ')'
+< '.'
+< OBJECTID initBook
+< '('
+< STR_CONST "Compilers, Principles, Techniques, and Tools"
+< ','
+< STR_CONST "Aho, Sethi, and Ullman"
+< ')'
+---
+>             (let an_article : Article <-
+>                 (new Article).initArticle("The Top 100 CD_ROMs",
+>                                           "Ulanoff",
+>                                           "PC Magazine")
+430,480c126,133
+< '('
+< LET
+< OBJECTID an_article
+< ':'
+< TYPEID Article
+< ASSIGN
+< '('
+< NEW
+< TYPEID Article
+< ')'
+< '.'
+< OBJECTID initArticle
+< '('
+< STR_CONST "The Top 100 CD_ROMs"
+< ','
+< STR_CONST "Ulanoff"
+< ','
+< STR_CONST "PC Magazine"
+< ')'
+< IN
+< '{'
+< OBJECTID books
+< ASSIGN
+< '('
+< NEW
+< TYPEID Nil
+< ')'
+< '.'
+< OBJECTID cons
+< '('
+< OBJECTID a_book
+< ')'
+< '.'
+< OBJECTID cons
+< '('
+< OBJECTID an_article
+< ')'
+< ';'
+< OBJECTID books
+< '.'
+< OBJECTID print_list
+< '('
+< ')'
+< ';'
+< '}'
+< ')'
+< ')'
+< '}'
+< ';'
+< '}'
+< ';'
+---
+>                 {
+>                     books <- (new Nil).cons(a_book).cons(an_article);
+>                     books.print_list();
+>                 }
+>             )  -- end let an_article
+>         )  -- end let a_book
+>     };
+> };

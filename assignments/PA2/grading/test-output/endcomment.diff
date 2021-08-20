@@ -1,0 +1,9 @@
+1,6c1
+< TYPEID This
+< OBJECTID comment
+< OBJECTID was
+< OBJECTID never
+< OBJECTID begun
+< LONGERROR
+---
+> This comment was never begun *)

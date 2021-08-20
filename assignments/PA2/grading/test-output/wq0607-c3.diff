@@ -1,0 +1,20 @@
+1,14c1,4
+< STR_CONST "\\"
+< STR_CONST "\"\""
+< LONGERROR
+< LONGERROR
+< STR_CONST ""
+< LONGERROR
+< STR_CONST "\\"
+< LONGERROR
+< STR_CONST "\\"
+< STR_CONST ""
+< LONGERROR
+< STR_CONST "\""
+< LONGERROR
+< LONGERROR
+---
+> (* Complicated sequence of strings and escaped quotes and errors *)
+> 
+> "\\""\"\""\\""\"\\"\"\\"""\"\""\"
+> 

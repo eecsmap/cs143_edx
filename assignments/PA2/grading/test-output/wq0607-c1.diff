@@ -1,0 +1,9 @@
+1c1,6
+< STR_CONST "--"
+---
+> (* COMMENT, STRING, COMMENT, COMMENT *)
+> 
+> --"--"--"
+> "--"--"--
+> --"--"--"
+> 

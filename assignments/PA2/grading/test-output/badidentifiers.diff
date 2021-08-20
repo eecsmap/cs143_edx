@@ -1,0 +1,29 @@
+1,20c1,7
+< OBJECTID inky
+< '.'
+< OBJECTID binky
+< '.'
+< OBJECTID winky
+< '.'
+< OBJECTID dot
+< INT_CONST 1
+< OBJECTID thatwasanumber
+< OBJECTID two
+< '-'
+< OBJECTID objects
+< TYPEID Two
+< '-'
+< TYPEID Types
+< ERROR "_"
+< OBJECTID underscore
+< TYPEID Type
+< '-'
+< OBJECTID object
+---
+> inky.binky.winky.dot
+> 1thatwasanumber
+> two-objects
+> Two-Types
+> _underscore
+> Type-object
+> 

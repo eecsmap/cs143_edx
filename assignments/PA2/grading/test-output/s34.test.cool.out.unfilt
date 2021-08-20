@@ -1,0 +1,5 @@
+#name "./s34.test.cool"
+before_it
+
+"this string \
+doens't end

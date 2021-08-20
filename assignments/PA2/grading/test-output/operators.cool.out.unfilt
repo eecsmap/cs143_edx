@@ -1,0 +1,17 @@
+#name "./operators.cool"
+(* some operators *)
+;{}(,):@.+-*/~ < = <- #1 DARROW
+ <=
+
+(* should be < and <= *)
+<<=
+
+(* should be <= and = *)
+<==
+
+(* should be <= and #1 DARROW
+ *)
+<=#1 DARROW
+
+<<-
+

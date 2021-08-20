@@ -1,0 +1,5 @@
+1c1,2
+< LONGERROR
+---
+> -- tricky: this should be seen as an error, not two tokens
+> *)

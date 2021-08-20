@@ -1,0 +1,5 @@
+1c1,2
+< ERROR "_"
+---
+> (* subtle: this is illegal *)
+> _

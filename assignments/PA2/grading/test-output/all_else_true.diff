@@ -1,0 +1,36 @@
+17,32c17,33
+< BOOL_CONST true
+< BOOL_CONST true
+< BOOL_CONST true
+< BOOL_CONST true
+< BOOL_CONST true
+< BOOL_CONST true
+< BOOL_CONST true
+< BOOL_CONST true
+< TYPEID True
+< TYPEID TRue
+< TYPEID TrUe
+< TYPEID TruE
+< TYPEID TRUe
+< TYPEID TRuE
+< TYPEID TrUE
+< TYPEID TRUE
+---
+> 
+> true
+> tRue
+> trUe
+> truE
+> tRUe
+> tRuE
+> trUE
+> tRUE
+> True
+> TRue
+> TrUe
+> TruE
+> TRUe
+> TRuE
+> TrUE
+> TRUE
+\ No newline at end of file

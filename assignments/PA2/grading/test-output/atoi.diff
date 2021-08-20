@@ -1,0 +1,569 @@
+1,360c1,76
+< CLASS
+< TYPEID A2I
+< '{'
+< OBJECTID c2i
+< '('
+< OBJECTID char
+< ':'
+< TYPEID String
+< ')'
+< ':'
+< TYPEID Int
+< '{'
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "0"
+< THEN
+< INT_CONST 0
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "1"
+< THEN
+< INT_CONST 1
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "2"
+< THEN
+< INT_CONST 2
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "3"
+< THEN
+< INT_CONST 3
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "4"
+< THEN
+< INT_CONST 4
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "5"
+< THEN
+< INT_CONST 5
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "6"
+< THEN
+< INT_CONST 6
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "7"
+< THEN
+< INT_CONST 7
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "8"
+< THEN
+< INT_CONST 8
+< ELSE
+< IF
+< OBJECTID char
+< '='
+< STR_CONST "9"
+< THEN
+< INT_CONST 9
+< ELSE
+< '{'
+< OBJECTID abort
+< '('
+< ')'
+< ';'
+< INT_CONST 0
+< ';'
+< '}'
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< '}'
+< ';'
+< OBJECTID i2c
+< '('
+< OBJECTID i
+< ':'
+< TYPEID Int
+< ')'
+< ':'
+< TYPEID String
+< '{'
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 0
+< THEN
+< STR_CONST "0"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 1
+< THEN
+< STR_CONST "1"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 2
+< THEN
+< STR_CONST "2"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 3
+< THEN
+< STR_CONST "3"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 4
+< THEN
+< STR_CONST "4"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 5
+< THEN
+< STR_CONST "5"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 6
+< THEN
+< STR_CONST "6"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 7
+< THEN
+< STR_CONST "7"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 8
+< THEN
+< STR_CONST "8"
+< ELSE
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 9
+< THEN
+< STR_CONST "9"
+< ELSE
+< '{'
+< OBJECTID abort
+< '('
+< ')'
+< ';'
+< STR_CONST ""
+< ';'
+< '}'
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< '}'
+< ';'
+< OBJECTID a2i
+< '('
+< OBJECTID s
+< ':'
+< TYPEID String
+< ')'
+< ':'
+< TYPEID Int
+< '{'
+< IF
+< OBJECTID s
+< '.'
+< OBJECTID length
+< '('
+< ')'
+< '='
+< INT_CONST 0
+< THEN
+< INT_CONST 0
+< ELSE
+< IF
+< OBJECTID s
+< '.'
+< OBJECTID substr
+< '('
+< INT_CONST 0
+< ','
+< INT_CONST 1
+< ')'
+< '='
+< STR_CONST "-"
+< THEN
+< '~'
+< OBJECTID a2i_aux
+< '('
+< OBJECTID s
+< '.'
+< OBJECTID substr
+< '('
+< INT_CONST 1
+< ','
+< OBJECTID s
+< '.'
+< OBJECTID length
+< '('
+< ')'
+< '-'
+< INT_CONST 1
+< ')'
+< ')'
+< ELSE
+< IF
+< OBJECTID s
+< '.'
+< OBJECTID substr
+< '('
+< INT_CONST 0
+< ','
+< INT_CONST 1
+< ')'
+< '='
+< STR_CONST "+"
+< THEN
+< OBJECTID a2i_aux
+< '('
+< OBJECTID s
+< '.'
+< OBJECTID substr
+< '('
+< INT_CONST 1
+< ','
+< OBJECTID s
+< '.'
+< OBJECTID length
+< '('
+< ')'
+< '-'
+< INT_CONST 1
+< ')'
+< ')'
+< ELSE
+< OBJECTID a2i_aux
+< '('
+< OBJECTID s
+< ')'
+< FI
+< FI
+< FI
+< '}'
+< ';'
+< OBJECTID a2i_aux
+< '('
+< OBJECTID s
+< ':'
+< TYPEID String
+< ')'
+< ':'
+< TYPEID Int
+< '{'
+< '('
+< LET
+< OBJECTID int
+< ':'
+< TYPEID Int
+< ASSIGN
+< INT_CONST 0
+< IN
+< '{'
+< '('
+< LET
+< OBJECTID j
+< ':'
+< TYPEID Int
+< ASSIGN
+< OBJECTID s
+< '.'
+< OBJECTID length
+< '('
+< ')'
+< IN
+< '('
+< LET
+< OBJECTID i
+< ':'
+< TYPEID Int
+< ASSIGN
+< INT_CONST 0
+< IN
+< WHILE
+< OBJECTID i
+< '<'
+< OBJECTID j
+< LOOP
+< '{'
+< OBJECTID int
+< ASSIGN
+< OBJECTID int
+< '*'
+< INT_CONST 10
+< '+'
+< OBJECTID c2i
+< '('
+< OBJECTID s
+< '.'
+< OBJECTID substr
+< '('
+< OBJECTID i
+< ','
+< INT_CONST 1
+< ')'
+< ')'
+< ';'
+< OBJECTID i
+< ASSIGN
+< OBJECTID i
+< '+'
+< INT_CONST 1
+< ';'
+< '}'
+---
+> (*
+>    The class A2I provides integer-to-string and string-to-integer
+> conversion routines.  To use these routines, either inherit them
+> in the class where needed, have a dummy variable bound to
+> something of type A2I, or simpl write (new A2I).method(argument).
+> *)
+> 
+> (*
+>    c2i   Converts a 1-character string to an integer.  Aborts
+>          if the string is not "0" through "9"
+> *)
+> class A2I {
+> 
+>      c2i(char : String) : Int {
+> 	if char = "0" then 0 else
+> 	if char = "1" then 1 else
+> 	if char = "2" then 2 else
+>         if char = "3" then 3 else
+>         if char = "4" then 4 else
+>         if char = "5" then 5 else
+>         if char = "6" then 6 else
+>         if char = "7" then 7 else
+>         if char = "8" then 8 else
+>         if char = "9" then 9 else
+>         { abort(); 0; }  -- the 0 is needed to satisfy the typchecker
+>         fi fi fi fi fi fi fi fi fi fi
+>      };
+> 
+> (*
+>    i2c is the inverse of c2i.
+> *)
+>      i2c(i : Int) : String {
+> 	if i = 0 then "0" else
+> 	if i = 1 then "1" else
+> 	if i = 2 then "2" else
+> 	if i = 3 then "3" else
+> 	if i = 4 then "4" else
+> 	if i = 5 then "5" else
+> 	if i = 6 then "6" else
+> 	if i = 7 then "7" else
+> 	if i = 8 then "8" else
+> 	if i = 9 then "9" else
+> 	{ abort(); ""; }  -- the "" is needed to satisfy the typchecker
+>         fi fi fi fi fi fi fi fi fi fi
+>      };
+> 
+> (*
+>    a2i converts an ASCII string into an integer.  The empty string
+> is converted to 0.  Signed and unsigned strings are handled.  The
+> method aborts if the string does not represent an integer.  Very
+> long strings of digits produce strange answers because of arithmetic 
+> overflow.
+> 
+> *)
+>      a2i(s : String) : Int {
+>         if s.length() = 0 then 0 else
+> 	if s.substr(0,1) = "-" then ~a2i_aux(s.substr(1,s.length()-1)) else
+>         if s.substr(0,1) = "+" then a2i_aux(s.substr(1,s.length()-1)) else
+>            a2i_aux(s)
+>         fi fi fi
+>      };
+> 
+> (*
+>   a2i_aux converts the usigned portion of the string.  As a programming
+> example, this method is written iteratively.
+> *)
+>      a2i_aux(s : String) : Int {
+> 	(let int : Int <- 0 in	
+>            {	
+>                (let j : Int <- s.length() in
+> 	          (let i : Int <- 0 in
+> 		    while i < j loop
+> 			{
+> 			    int <- int * 10 + c2i(s.substr(i,1));
+> 			    i <- i + 1;
+> 			}
+362,460c78,107
+< ')'
+< ')'
+< ';'
+< OBJECTID int
+< ';'
+< '}'
+< ')'
+< '}'
+< ';'
+< OBJECTID i2a
+< '('
+< OBJECTID i
+< ':'
+< TYPEID Int
+< ')'
+< ':'
+< TYPEID String
+< '{'
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 0
+< THEN
+< STR_CONST "0"
+< ELSE
+< IF
+< INT_CONST 0
+< '<'
+< OBJECTID i
+< THEN
+< OBJECTID i2a_aux
+< '('
+< OBJECTID i
+< ')'
+< ELSE
+< STR_CONST "-"
+< '.'
+< OBJECTID concat
+< '('
+< OBJECTID i2a_aux
+< '('
+< OBJECTID i
+< '*'
+< '~'
+< INT_CONST 1
+< ')'
+< ')'
+< FI
+< FI
+< '}'
+< ';'
+< OBJECTID i2a_aux
+< '('
+< OBJECTID i
+< ':'
+< TYPEID Int
+< ')'
+< ':'
+< TYPEID String
+< '{'
+< IF
+< OBJECTID i
+< '='
+< INT_CONST 0
+< THEN
+< STR_CONST ""
+< ELSE
+< '('
+< LET
+< OBJECTID next
+< ':'
+< TYPEID Int
+< ASSIGN
+< OBJECTID i
+< '/'
+< INT_CONST 10
+< IN
+< OBJECTID i2a_aux
+< '('
+< OBJECTID next
+< ')'
+< '.'
+< OBJECTID concat
+< '('
+< OBJECTID i2c
+< '('
+< OBJECTID i
+< '-'
+< OBJECTID next
+< '*'
+< INT_CONST 10
+< ')'
+< ')'
+< ')'
+< FI
+< '}'
+< ';'
+< '}'
+< ';'
+---
+> 		  )
+> 	       );
+>               int;
+> 	    }
+>         )
+>      };
+> 
+> (*
+>     i2a converts an integer to a string.  Positive and negative 
+> numbers are handled correctly.  
+> *)
+>     i2a(i : Int) : String {
+> 	if i = 0 then "0" else 
+>         if 0 < i then i2a_aux(i) else
+>           "-".concat(i2a_aux(i * ~1)) 
+>         fi fi
+>     };
+> 	
+> (*
+>     i2a_aux is an example using recursion.
+> *)		
+>     i2a_aux(i : Int) : String {
+>         if i = 0 then "" else 
+> 	    (let next : Int <- i / 10 in
+> 		i2a_aux(next).concat(i2c(i - next * 10))
+> 	    )
+>         fi
+>     };
+> 
+> };
